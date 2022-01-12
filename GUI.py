@@ -9,16 +9,17 @@
 ################################################################################
 
 from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
-    QMetaObject, QObject, QPoint, QRect,
-    QSize, QTime, QUrl, Qt)
+                            QMetaObject, QObject, QPoint, QRect,
+                            QSize, QTime, QUrl, Qt)
 from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-    QFont, QFontDatabase, QGradient, QIcon,
-    QImage, QKeySequence, QLinearGradient, QPainter,
-    QPalette, QPixmap, QRadialGradient, QTransform)
+                           QFont, QFontDatabase, QGradient, QIcon,
+                           QImage, QKeySequence, QLinearGradient, QPainter,
+                           QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QGridLayout, QLabel, QPushButton,
                                QSizePolicy, QSpinBox, QTextBrowser, QVBoxLayout,
                                QWidget, QWizard, QWizardPage, QTextEdit)
 import Resources_rc
+
 
 class Ui_Wizard(object):
     def setupUi(self, Wizard):
@@ -29,11 +30,12 @@ class Ui_Wizard(object):
         Wizard.setMinimumSize(QSize(366, 660))
         Wizard.setMaximumSize(QSize(500, 660))
         icon = QIcon()
-        icon.addFile(u":/nowyPrzedrostek/946-9465376_download-svg-download-png-sulfur-dioxide-icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u":/nowyPrzedrostek/946-9465376_download-svg-download-png-sulfur-dioxide-icon.png", QSize(),
+                     QIcon.Normal, QIcon.Off)
         Wizard.setWindowIcon(icon)
         Wizard.setLocale(QLocale(QLocale.Polish, QLocale.Poland))
         Wizard.setWizardStyle(QWizard.ModernStyle)
-        Wizard.setOptions(QWizard.HaveFinishButtonOnEarlyPages|QWizard.HelpButtonOnRight|QWizard.NoCancelButton)
+        Wizard.setOptions(QWizard.HaveFinishButtonOnEarlyPages | QWizard.HelpButtonOnRight | QWizard.NoCancelButton)
         Wizard.setTitleFormat(Qt.AutoText)
         self.wizardPage1 = QWizardPage()
         self.wizardPage1.setObjectName(u"wizardPage1")
@@ -79,9 +81,10 @@ class Ui_Wizard(object):
 
         self.temp_spalin_1 = QSpinBox(self.wizardPage2)
         self.temp_spalin_1.setObjectName(u"temp_spalin_1")
-        self.temp_spalin_1.setMinimum(-100000)
-        self.temp_spalin_1.setMaximum(100000)
-        self.temp_spalin_1.setValue(10)
+        self.temp_spalin_1.setMinimum(50)
+        self.temp_spalin_1.setMaximum(150)
+        self.temp_spalin_1.setSingleStep(1)
+        self.temp_spalin_1.setValue(125)
 
         self.gridLayout.addWidget(self.temp_spalin_1, 0, 1, 1, 2)
 
@@ -92,13 +95,17 @@ class Ui_Wizard(object):
 
         self.zasiarczenie_wegla = QSpinBox(self.wizardPage2)
         self.zasiarczenie_wegla.setObjectName(u"zasiarczenie_wegla")
-        self.zasiarczenie_wegla.setMaximum(100)
-        self.zasiarczenie_wegla.setValue(20)
+        self.zasiarczenie_wegla.setMinimum(-500)
+        self.zasiarczenie_wegla.setMaximum(3000)
+        self.zasiarczenie_wegla.setValue(1650)
 
         self.gridLayout.addWidget(self.zasiarczenie_wegla, 12, 1, 1, 2)
 
         self.pressure_in = QSpinBox(self.wizardPage2)
         self.pressure_in.setObjectName(u"pressure_in")
+        self.pressure_in.setMinimum(-1000)
+        self.pressure_in.setMaximum(1000)
+        self.pressure_in.setValue(-100)
 
         self.gridLayout.addWidget(self.pressure_in, 8, 1, 1, 2)
 
@@ -110,7 +117,8 @@ class Ui_Wizard(object):
 
         self.temp_hydratora = QSpinBox(self.wizardPage2)
         self.temp_hydratora.setObjectName(u"temp_hydratora")
-        self.temp_hydratora.setValue(50)
+        self.temp_hydratora.setMaximum(120)
+        self.temp_hydratora.setValue(75)
 
         self.gridLayout.addWidget(self.temp_hydratora, 5, 1, 1, 2)
 
@@ -127,15 +135,17 @@ class Ui_Wizard(object):
 
         self.poziom_p_konc = QSpinBox(self.wizardPage2)
         self.poziom_p_konc.setObjectName(u"poziom_p_konc")
-        self.poziom_p_konc.setMinimum(1)
-        self.poziom_p_konc.setValue(10)
+        self.poziom_p_konc.setMinimum(0)
+        self.poziom_p_konc.setMaximum(100)
+        self.poziom_p_konc.setSingleStep(1)
+        self.poziom_p_konc.setValue(40)
 
         self.gridLayout.addWidget(self.poziom_p_konc, 3, 1, 1, 2)
 
         self.air = QSpinBox(self.wizardPage2)
         self.air.setObjectName(u"air")
-        self.air.setMaximum(100)
-        self.air.setValue(20)
+        self.air.setMaximum(1500)
+        self.air.setValue(990)
 
         self.gridLayout.addWidget(self.air, 10, 1, 1, 2)
 
@@ -146,8 +156,9 @@ class Ui_Wizard(object):
 
         self.temp_spalin_in = QSpinBox(self.wizardPage2)
         self.temp_spalin_in.setObjectName(u"temp_spalin_in")
+        self.temp_spalin_in.setMaximum(200)
         self.temp_spalin_in.setSingleStep(1)
-        self.temp_spalin_in.setValue(3)
+        self.temp_spalin_in.setValue(100)
 
         self.gridLayout.addWidget(self.temp_spalin_in, 9, 1, 1, 2)
 
@@ -158,13 +169,17 @@ class Ui_Wizard(object):
 
         self.temp_spalin_2 = QSpinBox(self.wizardPage2)
         self.temp_spalin_2.setObjectName(u"temp_spalin_2")
-        self.temp_spalin_2.setValue(9)
+        self.temp_spalin_2.setMinimum(50)
+        self.temp_spalin_2.setMaximum(150)
+        self.temp_spalin_2.setSingleStep(1)
+        self.temp_spalin_2.setValue(125)
 
         self.gridLayout.addWidget(self.temp_spalin_2, 2, 1, 1, 2)
 
         self.delta_p = QSpinBox(self.wizardPage2)
         self.delta_p.setObjectName(u"delta_p")
-        self.delta_p.setValue(1)
+        self.delta_p.setMaximum(500)
+        self.delta_p.setValue(300)
 
         self.gridLayout.addWidget(self.delta_p, 7, 1, 1, 2)
 
@@ -177,8 +192,8 @@ class Ui_Wizard(object):
 
         self.temp_spalin_in_2 = QSpinBox(self.wizardPage2)
         self.temp_spalin_in_2.setObjectName(u"temp_spalin_in_2")
-        self.temp_spalin_in_2.setMaximum(100)
-        self.temp_spalin_in_2.setValue(20)
+        self.temp_spalin_in_2.setMaximum(200)
+        self.temp_spalin_in_2.setValue(100)
 
         self.gridLayout.addWidget(self.temp_spalin_in_2, 11, 1, 1, 2)
 
@@ -187,38 +202,61 @@ class Ui_Wizard(object):
 
         self.gridLayout.addWidget(self.output, 15, 0, 1, 3)
 
+        self.label_8 = QLabel(self.wizardPage2)
+        self.label_8.setObjectName(u"label_8")
+
+        self.gridLayout.addWidget(self.label_8, 13, 0, 1, 1)
+
+        self.ilosc_wapna = QSpinBox(self.wizardPage2)
+        self.ilosc_wapna.setObjectName(u"ilosc_wapna")
+        self.ilosc_wapna.setMinimum(0)
+        self.ilosc_wapna.setMaximum(2500)
+        self.ilosc_wapna.setValue(1250)
+
+        self.gridLayout.addWidget(self.ilosc_wapna, 13, 1, 1, 2)
+
         Wizard.addPage(self.wizardPage2)
 
         self.retranslateUi(Wizard)
 
         QMetaObject.connectSlotsByName(Wizard)
+
     # setupUi
 
     def retranslateUi(self, Wizard):
-        Wizard.setWindowTitle(QCoreApplication.translate("Wizard", u"Projekt ZPI - Instalacja Odsiarczania Spalin", None))
+        Wizard.setWindowTitle(
+            QCoreApplication.translate("Wizard", u"Projekt ZPI - Instalacja Odsiarczania Spalin", None))
         self.wizardPage1.setTitle(QCoreApplication.translate("Wizard", u"Projekt ZPI - IOS", None))
         self.wizardPage1.setSubTitle("")
-        self.textBrowser.setHtml(QCoreApplication.translate("Wizard", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Autorzy: </span></p>\n"
-"<ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;\"><li style=\" font-size:10pt;\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Amadeusz Bubniak</li>\n"
-"<li style=\" font-size:10pt;\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Miko\u0142aj Cypli\u0144ski</li>\n"
-"<li style=\" fo"
-                        "nt-size:10pt;\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Micha\u0142 G\u0105tkowski</li>\n"
-"<li style=\" font-size:10pt;\" style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Tomasz Hotlo\u015b</li></ul></body></html>", None))
+        self.textBrowser.setHtml(QCoreApplication.translate("Wizard",
+                                                            u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+                                                            "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+                                                            "p, li { white-space: pre-wrap; }\n"
+                                                            "</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+                                                            "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Autorzy: </span></p>\n"
+                                                            "<ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;\"><li style=\" font-size:10pt;\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Amadeusz Bubniak</li>\n"
+                                                            "<li style=\" font-size:10pt;\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Miko\u0142aj Cypli\u0144ski</li>\n"
+                                                            "<li style=\" fo"
+                                                            "nt-size:10pt;\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Micha\u0142 G\u0105tkowski</li></ul></body></html>",
+                                                            None))
         self.wizardPage2.setTitle(QCoreApplication.translate("Wizard", u"Wpisz parametry algorytmu", None))
-        self.wizardPage2.setSubTitle(QCoreApplication.translate("Wizard", u"W wi\u0119kszo\u015bci parametry te s\u0105 liczbami ca\u0142kowitymi.", None))
-        self.label_7.setText(QCoreApplication.translate("Wizard", u"<html><head/><body><p>powietrze fluidyzacyjne</p></body></html>", None))
+        self.wizardPage2.setSubTitle(QCoreApplication.translate("Wizard",
+                                                                u"W wi\u0119kszo\u015bci parametry te s\u0105 liczbami ca\u0142kowitymi.",
+                                                                None))
+        self.label_7.setText(
+            QCoreApplication.translate("Wizard", u"<html><head/><body><p>powietrze fluidyzacyjne</p></body></html>",
+                                       None))
         self.label_10.setText(QCoreApplication.translate("Wizard", u"ci\u015bnienie na wlocie", None))
         self.label.setText(QCoreApplication.translate("Wizard", u"temperatura spalin", None))
         self.pushButton_run.setText(QCoreApplication.translate("Wizard", u"Uruchom", None))
         self.temp_spalin_1.setSuffix(QCoreApplication.translate("Wizard", u" \u00b0C", None))
         self.label_12.setText(QCoreApplication.translate("Wizard", u"temp. spalin przed reaktorem", None))
         self.zasiarczenie_wegla.setSuffix("")
-        self.label_13.setText(QCoreApplication.translate("Wizard", u"delta p w kolanie reaktora", None))
-        self.label_6.setText(QCoreApplication.translate("Wizard", u"<html><head/><body><p>zasiarczenie w\u0119gla</p></body></html>", None))
+        self.label_13.setText(QCoreApplication.translate("Wizard", u"\u0394p w kolanie reaktora", None))
+        self.temp_hydratora.setSuffix(QCoreApplication.translate("Wizard", u" \u00b0C", None))
+        self.label_6.setText(
+            QCoreApplication.translate("Wizard", u"<html><head/><body><p>zasiarczenie w\u0119gla</p></body></html>",
+                                       None))
         self.label_3.setText(QCoreApplication.translate("Wizard", u"poziom produktu ko\u0144cowego", None))
         self.air.setSuffix(QCoreApplication.translate("Wizard", u" Nm3/h", None))
         self.label_4.setText(QCoreApplication.translate("Wizard", u"temperatura hydratora", None))
@@ -229,5 +267,6 @@ class Ui_Wizard(object):
         self.temp_spalin_in_2.setSuffix(QCoreApplication.translate("Wizard", u" \u00b0C", None))
         self.temp_spalin_in_2.setPrefix("")
         self.output.setText("")
+        self.label_8.setText(QCoreApplication.translate("Wizard", u"Ilo\u015b\u0107 wapna", None))
+        self.ilosc_wapna.setSuffix(QCoreApplication.translate("Wizard", u" kg", None))
     # retranslateUi
-

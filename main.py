@@ -10,7 +10,7 @@ ui = GUI.Ui_Wizard()
 
 
 def run():
-    with open('scaler.pickle', 'rb') as scaler_handle:
+    with open('scaler_11.pickle', 'rb') as scaler_handle:
         scaler = pickle.load(scaler_handle)
 
     params = [[ui.temp_spalin_1.value(),
@@ -22,12 +22,13 @@ def run():
                ui.temp_spalin_in.value(),
                ui.air.value(),
                ui.temp_spalin_in_2.value(),
-               ui.zasiarczenie_wegla.value()
+               ui.zasiarczenie_wegla.value(),
+               ui.ilosc_wapna.value()
                ]]
 
     data = scaler.transform(params)
 
-    with open('regression_tree.pickle', 'rb') as model_handle:
+    with open('regression_tree_11.pickle', 'rb') as model_handle:
         model = pickle.load(model_handle)
 
     output = model.predict(data)
